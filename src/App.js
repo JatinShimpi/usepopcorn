@@ -55,18 +55,26 @@ export default function App() {
   const [movies, setMovies] = useState(tempMovieData);
   return (
     <>
-      <Navbar movies={movies}></Navbar>
-      <Main movies={movies}></Main>
+      <Navbar>
+        <Search></Search>
+        <Numresults movies={movies}></Numresults>
+      </Navbar>
+
+      <Main>
+        <ListBox>
+          <MovieList movies={movies}></MovieList>
+        </ListBox>
+        <WatchedBox></WatchedBox>
+      </Main>
     </>
   );
 }
 
-function Navbar({movies}) {
+function Navbar({children}) {
   return (
     <nav className="nav-bar">
       <Logo></Logo>
-      <Search></Search>
-      <Numresults movies={movies}></Numresults>
+      {children}
     </nav>
   );
 }
@@ -101,16 +109,15 @@ function Numresults({movies}) {
   );
 }
 
-function Main({movies}) {
+function Main({children}) {
   return (
     <main className="main">
-      <ListBox movies={movies}></ListBox>
-      <WatchedBox></WatchedBox>
+      {children}
     </main>
   );
 }
 
-function ListBox({movies}) {
+function ListBox({children}) {
   const [isOpen1, setIsOpen1] = useState(true);
   return (
     <div className="box">
@@ -120,7 +127,7 @@ function ListBox({movies}) {
       >
         {isOpen1 ? "–" : "+"}
       </button>
-      {isOpen1 && <MovieList movies={movies}></MovieList>}
+      {isOpen1 && children}
     </div>
   );
 }
