@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App'; 
-import StarRating from "./StaarRating"
+// import StarRating from "./StaarRating"
 
 // function Test(){
 //   const [movieRating , setMovieRating]=useState(0)
